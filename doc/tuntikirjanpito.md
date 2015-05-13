@@ -2,7 +2,7 @@
 10.5.
 11.5.
 12.5.
-13.5.
+13.5.	1 tunti 	1. Deadlinen viimeistely
 14.5.
 15.5.
 16.5.
