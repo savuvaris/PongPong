@@ -1,9 +1,9 @@
-package Paddle;
+package paddle;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import pongpong.PongPong;
+import game.GameCanvas;
 
 public class Paddle {
 
@@ -19,6 +19,14 @@ public class Paddle {
     boolean goDown = false;
     boolean goLeft = false;
     boolean goRight = false;
+
+    public int getXPosition() {
+        return x;
+    }
+
+    public int getYPosition() {
+        return y;
+    }
 
     public void goUp(boolean goUp) {
         this.goUp = goUp;
@@ -50,7 +58,7 @@ public class Paddle {
         }
     }
 
-    public void update(PongPong game) {
+    public void update() {
         if (rotate) {
             boundingBox.setBounds(x, y, height, width);
         } else {
@@ -61,14 +69,14 @@ public class Paddle {
             if (goLeft && x > 0) {
                 x -= speed;
             }
-            if (goRight && x < game.getWidth() - height) { // height is actually width, when paddle is rotated...
+            if (goRight && x < GameCanvas.playAreaWidth - height) { // height is actually width, when paddle is rotated...
                 x += speed;
             }
         } else {
             if (goUp && y > 0) {
                 y -= speed;
             }
-            if (goDown && y < game.getHeight() - height) {
+            if (goDown && y < GameCanvas.playAreaHeight - height) {
                 y += speed;
             }
         }
@@ -83,4 +91,3 @@ public class Paddle {
         }
     }
 }
-

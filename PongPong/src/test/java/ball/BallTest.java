@@ -1,18 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Ball;
+package ball;
 
-import java.awt.Graphics;
+import ball.Ball;
 import junit.framework.TestCase;
-import pongpong.PongPong;
 
-/**
- *
- * @author Tomi
- */
 public class BallTest extends TestCase {
 
     public BallTest(String testName) {

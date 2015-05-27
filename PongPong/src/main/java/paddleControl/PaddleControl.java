@@ -1,14 +1,15 @@
-package PaddleControl;
+package paddleControl;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import pongpong.PongPong;
+import game.Game;
+import game.GameCanvas;
 
 public class PaddleControl implements KeyListener {
 
     public int keyCode;
 
-    public PaddleControl(PongPong game) {
+    public PaddleControl(GameCanvas game) {
         game.addKeyListener(this);
     }
 
@@ -17,37 +18,37 @@ public class PaddleControl implements KeyListener {
         keyCode = e.getKeyCode();
 
         if (keyCode == KeyEvent.VK_W) {
-            PongPong.player1.goUp(true);
-            PongPong.player3.goUp(true);
+            Game.player1.goUp(true);
+            Game.player3.goUp(true);
         }
         if (keyCode == KeyEvent.VK_S) {
-            PongPong.player1.goDown(true);
-            PongPong.player3.goDown(true);
+            Game.player1.goDown(true);
+            Game.player3.goDown(true);
         }
         if (keyCode == KeyEvent.VK_A) {
-            PongPong.player1.goLeft(true);
-            PongPong.player3.goLeft(true);
+            Game.player1.goLeft(true);
+            Game.player3.goLeft(true);
         }
         if (keyCode == KeyEvent.VK_D) {
-            PongPong.player1.goRight(true);
-            PongPong.player3.goRight(true);
+            Game.player1.goRight(true);
+            Game.player3.goRight(true);
         }
 
         if (keyCode == KeyEvent.VK_I) {
-            PongPong.player2.goUp(true);
-            PongPong.player4.goUp(true);
+            Game.player2.goUp(true);
+            Game.player4.goUp(true);
         }
         if (keyCode == KeyEvent.VK_K) {
-            PongPong.player2.goDown(true);
-            PongPong.player4.goDown(true);
+            Game.player2.goDown(true);
+            Game.player4.goDown(true);
         }
         if (keyCode == KeyEvent.VK_J) {
-            PongPong.player2.goLeft(true);
-            PongPong.player4.goLeft(true);
+            Game.player2.goLeft(true);
+            Game.player4.goLeft(true);
         }
         if (keyCode == KeyEvent.VK_L) {
-            PongPong.player2.goRight(true);
-            PongPong.player4.goRight(true);
+            Game.player2.goRight(true);
+            Game.player4.goRight(true);
         }
     }
 
@@ -56,37 +57,37 @@ public class PaddleControl implements KeyListener {
         keyCode = e.getKeyCode();
 
         if (keyCode == KeyEvent.VK_W) {
-            PongPong.player1.goUp(false);
-            PongPong.player3.goUp(false);
+            Game.player1.goUp(false);
+            Game.player3.goUp(false);
         }
         if (keyCode == KeyEvent.VK_S) {
-            PongPong.player1.goDown(false);
-            PongPong.player3.goDown(false);
+            Game.player1.goDown(false);
+            Game.player3.goDown(false);
         }
         if (keyCode == KeyEvent.VK_A) {
-            PongPong.player1.goLeft(false);
-            PongPong.player3.goLeft(false);
+            Game.player1.goLeft(false);
+            Game.player3.goLeft(false);
         }
         if (keyCode == KeyEvent.VK_D) {
-            PongPong.player1.goRight(false);
-            PongPong.player3.goRight(false);
+            Game.player1.goRight(false);
+            Game.player3.goRight(false);
         }
 
         if (keyCode == KeyEvent.VK_I) {
-            PongPong.player2.goUp(false);
-            PongPong.player4.goUp(false);
+            Game.player2.goUp(false);
+            Game.player4.goUp(false);
         }
         if (keyCode == KeyEvent.VK_K) {
-            PongPong.player2.goDown(false);
-            PongPong.player4.goDown(false);
+            Game.player2.goDown(false);
+            Game.player4.goDown(false);
         }
         if (keyCode == KeyEvent.VK_J) {
-            PongPong.player2.goLeft(false);
-            PongPong.player4.goLeft(false);
+            Game.player2.goLeft(false);
+            Game.player4.goLeft(false);
         }
         if (keyCode == KeyEvent.VK_L) {
-            PongPong.player2.goRight(false);
-            PongPong.player4.goRight(false);
+            Game.player2.goRight(false);
+            Game.player4.goRight(false);
         }
 
     }

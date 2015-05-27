@@ -1,10 +1,9 @@
-package Ball;
+package ball;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
-import pongpong.PongPong;
 
 public class Ball {
 
@@ -18,10 +17,8 @@ public class Ball {
     public Ball(int x, int y) {
         this.x = x;
         this.y = y;
-
         speedX = speedBase;
         speedY = speedBase;
-
         boundingBox = new Rectangle(x, y, ballSize, ballSize);
         boundingBox.setBounds((int)Math.round(this.x), (int)Math.round(this.y), this.ballSize, this.ballSize);
     }
@@ -58,9 +55,8 @@ public class Ball {
         return speedY;
     }
 
-    public void update(PongPong game) {
+    public void update() {
         boundingBox.setBounds((int)Math.round(this.x), (int)Math.round(this.y), this.ballSize, this.ballSize);
-        System.out.println(speedX + " " + speedY);
         x += speedX;
         y += speedY;
     }
