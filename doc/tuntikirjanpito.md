@@ -32,9 +32,9 @@
 
 25.5.
 
-26.5.	4 tuntia 	Ohjelmalogiikan koodausta, startMenun lisäys.
+26.5.	5 tuntia 	Ohjelmalogiikan koodausta, StartMenun lisäys.
 
-27.5.	2 tuntia 	Testien koodausta, Game-luokan lisäys.
+27.5.	5 tuntia 	Testien koodausta, Game-luokan lisäys, koodikatselmointi.
 
 28.5.
 
