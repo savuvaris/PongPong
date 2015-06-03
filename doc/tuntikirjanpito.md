@@ -44,11 +44,11 @@
 
 31.5.
 
-1.6.	2 tuntia	Sekvenssikaavioiden piirtämistä. Katselmoinnin kommentteihin reagointia.
+1.6.	3 tuntia	Sekvenssikaavioiden piirtämistä. Katselmoinnin kommentteihin reagointia.
 
 2.6.
 
-3.6.	2 tuntia 	Sekvenssikaavioiden piirtämistä. Testausta.
+3.6.	3 tuntia 	Sekvenssikaavioiden piirtämistä. Testausta.
 
 4.6.
 
