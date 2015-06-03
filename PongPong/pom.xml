@@ -41,14 +41,14 @@
                 <version>1.1.4</version>
                 <configuration>
                     <targetClasses>
-                        <param>ball*</param>
-                        <param>paddle*</param>
-                        <param>game*</param>
+                        <param>ball.Ball</param>
+                        <param>paddle.Paddle</param>
+                        <param>game.Game</param>
                     </targetClasses>
                     <targetTests>
-                        <param>ball*</param>
-                        <param>paddle*</param>
-                        <param>game*</param>
+                        <param>ball.BallTest</param>
+                        <param>Paddle.PaddleTest</param>
+                        <param>game.GameTest</param>
                     </targetTests>
                 </configuration>
             </plugin>

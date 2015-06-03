@@ -5,28 +5,56 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
 
+/**
+ *
+ * @author Tomi
+ */
 public class GameCanvas extends Canvas implements Runnable {
 
+    /**
+     * PaddleControl moves the paddles
+     */
     public static PaddleControl pc;
     JFrame frame;
+
     public final int screenWidth = 600;
     public final int screenHeight = screenWidth;
     public final Dimension gameScreenSize = new Dimension(screenWidth, screenHeight);
     public final String gameTitle = "PongPong";
-
     public static int playAreaWidth;
     public static int playAreaHeight;
 
     static boolean gameRunning = false;
+    static boolean gamePaused = false;
 
     Game game;
 
     @Override
     public void run() {
         while (gameRunning) {
-            //update();
             game.update();
             render();
+            // Check for score, i.e. ball collided with borders
+            if (game.wallCollisionCheck) {
+                gameRunning = false;
+                gamePaused = true;
+            }
+            // Control framerate
+            try {
+                Thread.sleep(10);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        while (gamePaused) {
+            render();
+            // Check for space button
+            if (pc.launch) {
+                Game.ball.launch();
+                gameRunning = true;
+                gamePaused = false;
+                run();
+            }
             // Control framerate
             try {
                 Thread.sleep(10);
@@ -36,16 +64,25 @@ public class GameCanvas extends Canvas implements Runnable {
         }
     }
 
+    /**
+     * Start the game in paused mode
+     */
     public synchronized void start() {
-        gameRunning = true;
+        gamePaused = true;
+        Game.ball.launch();
         new Thread(this).start();
     }
 
+    /**
+     * Stop the game
+     */
     public static synchronized void stop() {
         gameRunning = false;
-        System.exit(0);
     }
 
+    /**
+     * Create the play area
+     */
     public GameCanvas() {
 
         frame = new JFrame();
@@ -69,6 +106,9 @@ public class GameCanvas extends Canvas implements Runnable {
         game = new Game();
     }
 
+    /**
+     * Draw objects
+     */
     public void render() {
         BufferStrategy bs = getBufferStrategy();
         if (bs == null) {

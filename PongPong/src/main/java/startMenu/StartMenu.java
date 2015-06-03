@@ -8,7 +8,7 @@ import game.GameCanvas;
 
 public class StartMenu extends JFrame {
 
-    public int numberOfPlayers;
+    public static int numberOfPlayers;
 
     int screenWidth = 250;
     int screenHeight = 250;

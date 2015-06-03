@@ -1,6 +1,8 @@
 package game;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,25 +32,52 @@ public class GameTest {
         instance.player2.goDown(true);
         instance.player3.goRight(true);
         instance.player4.goRight(true);
-        assertEquals(60, instance.player1.getYPosition());
-        assertEquals(60, instance.player2.getYPosition());
-        assertEquals(60, instance.player3.getXPosition());
-        assertEquals(60, instance.player4.getXPosition());
+        assertEquals(210, instance.player1.getYPosition());
+        assertEquals(210, instance.player2.getYPosition());
+        assertEquals(210, instance.player3.getXPosition());
+        assertEquals(210, instance.player4.getXPosition());
         instance.update();
-        assertEquals(62, instance.player1.getYPosition());
-        assertEquals(62, instance.player2.getYPosition());
-        assertEquals(62, instance.player3.getXPosition());
-        assertEquals(62, instance.player4.getXPosition());
+        assertEquals(212, instance.player1.getYPosition());
+        assertEquals(212, instance.player2.getYPosition());
+        assertEquals(212, instance.player3.getXPosition());
+        assertEquals(212, instance.player4.getXPosition());
     }
 
     /**
-     * Test of collision method, of class Game.
+     * Test of wallCollision method, of class Game.
      */
     @Test
-    public void testCollision() {
-        System.out.println("collision");
+    public void testWallCollision() {
+        System.out.println("wallCollision");
         Game instance = new Game();
-        instance.collision();
+
+        // Move ball to wall
+        instance.ball.setXPosition(0);
+
+        // Check for wall collision
+        assertFalse(instance.wallCollisionCheck);
+        instance.wallCollision();
+        assertTrue(instance.wallCollisionCheck);
     }
 
+    /**
+     * Test of paddleCollision method, of class Game.
+     */
+    @Test
+    public void paddleCollision() {
+        System.out.println("paddleCollision");
+        Game instance = new Game();
+
+        // Move ball to paddle
+        instance.ball.setXPosition(100);
+        instance.ball.setYPosition(100);
+        instance.player1.setXPosition(100);
+        instance.player1.setYPosition(100);
+        instance.ball.update();
+        instance.player1.update();
+        // Check for paddle collision
+        assertFalse(instance.paddleCollisionCheck);
+        instance.paddleCollision();
+        assertTrue(instance.paddleCollisionCheck);
+    }
 }

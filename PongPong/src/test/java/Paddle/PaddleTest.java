@@ -1,6 +1,7 @@
 package Paddle;
 
 import game.GameCanvas;
+import java.awt.Color;
 import java.awt.Graphics;
 import static junit.framework.TestCase.assertEquals;
 import org.junit.Test;

@@ -5,14 +5,26 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import game.GameCanvas;
 
+/**
+ *
+ * @author Tomi
+ */
 public class Paddle {
 
     int x, y;
     boolean rotate; // Rotate by 90 degrees for the top/bottom paddles
     int width = 10;
-    int height = 80;
-    int speed = 2;
 
+    /**
+     *  Height is used to calculate how far the paddle can travel before hitting the edges of the play area.
+     */
+    public static int height = 80;
+    int speed = 2;
+    Color paddleColor;
+
+    /**
+     *  Bounding box to check collisions
+     */
     public Rectangle boundingBox;
 
     boolean goUp = false;
@@ -20,30 +32,84 @@ public class Paddle {
     boolean goLeft = false;
     boolean goRight = false;
 
+    /**
+     *
+     * @return
+     */
     public int getXPosition() {
         return x;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getYPosition() {
         return y;
     }
 
+        /**
+     *
+     * @return
+     */
+    public void setXPosition(int x) {
+        this.x = x;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public void setYPosition(int y) {
+        this.y = y;
+    }
+    
+    /**
+     *
+     * @param goUp
+     */
     public void goUp(boolean goUp) {
         this.goUp = goUp;
     }
 
+    /**
+     *
+     * @param goDown
+     */
     public void goDown(boolean goDown) {
         this.goDown = goDown;
     }
 
+    /**
+     *
+     * @param goLeft
+     */
     public void goLeft(boolean goLeft) {
         this.goLeft = goLeft;
     }
 
+    /**
+     *
+     * @param goRight
+     */
     public void goRight(boolean goRight) {
         this.goRight = goRight;
     }
 
+    /**
+     *
+     * @param paddleColor
+     */
+    public void setColor(Color paddleColor) {
+        this.paddleColor = paddleColor;
+    }
+    
+    /**
+     *
+     * @param x
+     * @param y
+     * @param rotate
+     */
     public Paddle(int x, int y, boolean rotate) {
         this.x = x;
         this.y = y;
@@ -58,6 +124,9 @@ public class Paddle {
         }
     }
 
+    /**
+     *  Set the new location. Also set the orientation of the paddle.
+     */
     public void update() {
         if (rotate) {
             boundingBox.setBounds(x, y, height, width);
@@ -66,7 +135,7 @@ public class Paddle {
         }
 
         if (rotate) {
-            if (goLeft && x > 0) {
+            if (goLeft && x > 0) { 
                 x -= speed;
             }
             if (goRight && x < GameCanvas.playAreaWidth - height) { // height is actually width, when paddle is rotated...
@@ -82,8 +151,12 @@ public class Paddle {
         }
     }
 
+    /**
+     *
+     * @param g
+     */
     public void render(Graphics g) {
-        g.setColor(Color.BLACK);
+        g.setColor(paddleColor);
         if (rotate) {
             g.fillRect(x, y, height, width);
         } else {
