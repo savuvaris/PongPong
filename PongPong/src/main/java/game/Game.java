@@ -18,10 +18,19 @@ public class Game {
     public static Paddle player4;
     public static Ball ball;
 
+    public int p1score;
+    public int p2score;
+    public int p3score;
+    public int p4score;
+
     int ballSize = 16;
     double ballSpeed = 1.2;
     Random randomGen = new Random();
     public boolean wallCollisionCheck = false;
+    boolean leftWallCollision = false;
+    boolean rightWallCollision = false;
+    boolean topWallCollision = false;
+    boolean bottomWallCollision = false;
     public boolean paddleCollisionCheck = false;
 
     /**
@@ -29,10 +38,14 @@ public class Game {
      */
     public Game() {
         // Create paddles and set color according to the number of players
-        player1 = new Paddle(10, GameCanvas.playAreaHeight / 2 - Paddle.height / 2, false);
-        player2 = new Paddle(GameCanvas.playAreaWidth - 20, GameCanvas.playAreaHeight / 2 - Paddle.height / 2, false);
-        player3 = new Paddle(GameCanvas.playAreaWidth / 2 - Paddle.height / 2, 10, true);
-        player4 = new Paddle(GameCanvas.playAreaWidth / 2 - Paddle.height / 2, GameCanvas.playAreaHeight - 20, true);
+        // left
+        player1 = new Paddle(20, GameCanvas.playAreaHeight / 2 - Paddle.height / 2, false);
+        // right
+        player2 = new Paddle(GameCanvas.playAreaWidth - 30, GameCanvas.playAreaHeight / 2 - Paddle.height / 2, false);
+        // top
+        player3 = new Paddle(GameCanvas.playAreaWidth / 2 - Paddle.height / 2, 20, true);
+        // bottom
+        player4 = new Paddle(GameCanvas.playAreaWidth / 2 - Paddle.height / 2, GameCanvas.playAreaHeight - 30, true);
 
         // Set colors according to the number of players
         if (StartMenu.numberOfPlayers == 1) {
@@ -66,36 +79,96 @@ public class Game {
         player3.update();
         player4.update();
         wallCollision();
+        countScore(StartMenu.numberOfPlayers);
         paddleCollision();
         ball.update();
     }
 
+    /**
+     * Check scores
+     */
+    public void countScore(int numberOfPlayers) {
+        switch (numberOfPlayers) {
+            case 1:
+                if (paddleCollisionCheck) {
+                    p1score++;
+                }
+                if (wallCollisionCheck) {
+                    p1score--;
+                }
+                break;
+            case 2:
+                if (leftWallCollision || topWallCollision) {
+                    p2score++;
+                }
+                if (rightWallCollision || bottomWallCollision) {
+                    p1score--;
+                }
+                break;
+            case 4:
+                if (leftWallCollision) {
+                    p2score++;
+                    p3score++;
+                    p4score++;
+                }
+                if (rightWallCollision) {
+                    p1score++;
+                    p2score++;
+                    p4score++;
+                }
+                if (topWallCollision) {
+                    p1score++;
+                    p3score++;
+                    p4score++;
+                }
+                if (bottomWallCollision) {
+                    p1score++;
+                    p2score++;
+                    p3score++;
+                }
+                break;
+            default:
+                break;
+        }
+    }
 
     /**
      * Check for wall collisions.
      */
     public void wallCollision() {
         wallCollisionCheck = false;
+        leftWallCollision = false;
+        rightWallCollision = false;
+        topWallCollision = false;
+        bottomWallCollision = false;
+        // Score against player1 (left side)
         if (ball.getXPosition() <= 0) {
             ball.setXPosition(GameCanvas.playAreaWidth / 2);
             ball.setYPosition(GameCanvas.playAreaHeight / 2);
             wallCollisionCheck = true;
+            leftWallCollision = true;
+            // Score against player 3 (right side)
         } else if (ball.getXPosition() + ballSize >= GameCanvas.playAreaWidth) {
             ball.setXPosition(GameCanvas.playAreaWidth / 2);
             ball.setYPosition(GameCanvas.playAreaHeight / 2);
             wallCollisionCheck = true;
+            rightWallCollision = true;
         }
+        // Score against player 2 (top side)
         if (ball.getYPosition() <= 0) {
             ball.setXPosition(GameCanvas.playAreaWidth / 2);
             ball.setYPosition(GameCanvas.playAreaHeight / 2);
             wallCollisionCheck = true;
+            topWallCollision = true;
+            // Score against player 4 (bottom side)
         } else if (ball.getYPosition() + ballSize >= GameCanvas.playAreaHeight) {
             ball.setXPosition(GameCanvas.playAreaWidth / 2);
             ball.setYPosition(GameCanvas.playAreaHeight / 2);
             wallCollisionCheck = true;
+            bottomWallCollision = true;
         }
     }
-    
+
     /**
      * Check for paddle collisions.
      */
