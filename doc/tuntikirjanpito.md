@@ -50,7 +50,7 @@
 
 3.6.	3 tuntia 	Sekvenssikaavioiden piirtämistä. Testausta.
 
-4.6.
+4.6.	2 tuntia 	Pisteiden laskun lisäys. 4 deadlinen palautus.
 
 5.6.
 
