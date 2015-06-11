@@ -15,23 +15,23 @@ public class StartMenu extends JFrame {
     int buttonWidth = 150;
     int buttonHeight = 40;
 
-    JButton OnePlayer, TwoPlayer, FourPlayer;
+    JButton onePlayer, twoPlayer, fourPlayer;
 
     public StartMenu() {
         getContentPane().setLayout(null);
 
         // Add buttons
-        OnePlayer = new JButton("One Player");
-        getContentPane().add(OnePlayer);
-        OnePlayer.setBounds((screenWidth - buttonWidth) / 2, 5 + buttonHeight, buttonWidth, buttonHeight);
+        onePlayer = new JButton("One Player");
+        getContentPane().add(onePlayer);
+        onePlayer.setBounds((screenWidth - buttonWidth) / 2, 5 + buttonHeight, buttonWidth, buttonHeight);
 
-        TwoPlayer = new JButton("Two Players");
-        getContentPane().add(TwoPlayer);
-        TwoPlayer.setBounds((screenWidth - buttonWidth) / 2, 2 * (5 + buttonHeight), buttonWidth, buttonHeight);
+        twoPlayer = new JButton("Two Players");
+        getContentPane().add(twoPlayer);
+        twoPlayer.setBounds((screenWidth - buttonWidth) / 2, 2 * (5 + buttonHeight), buttonWidth, buttonHeight);
 
-        FourPlayer = new JButton("Four Players");
-        getContentPane().add(FourPlayer);
-        FourPlayer.setBounds((screenWidth - buttonWidth) / 2, 3 * (5 + buttonHeight), buttonWidth, buttonHeight);
+        fourPlayer = new JButton("Four Players");
+        getContentPane().add(fourPlayer);
+        fourPlayer.setBounds((screenWidth - buttonWidth) / 2, 3 * (5 + buttonHeight), buttonWidth, buttonHeight);
 
         // 
         pack();
@@ -43,7 +43,7 @@ public class StartMenu extends JFrame {
         setResizable(false);
 
         // Actionlisteners
-        OnePlayer.addActionListener(new ActionListener() {
+        onePlayer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -53,7 +53,7 @@ public class StartMenu extends JFrame {
             }
         });
 
-        TwoPlayer.addActionListener(new ActionListener() {
+        twoPlayer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -63,7 +63,7 @@ public class StartMenu extends JFrame {
             }
         });
 
-        FourPlayer.addActionListener(new ActionListener() {
+        fourPlayer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();

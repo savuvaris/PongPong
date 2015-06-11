@@ -32,80 +32,44 @@ public class Paddle {
     boolean goLeft = false;
     boolean goRight = false;
 
-    /**
-     *
-     * @return
-     */
     public int getXPosition() {
         return x;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getYPosition() {
         return y;
     }
 
-        /**
-     *
-     * @return
-     */
     public void setXPosition(int x) {
         this.x = x;
     }
 
-    /**
-     *
-     * @return
-     */
     public void setYPosition(int y) {
         this.y = y;
     }
     
-    /**
-     *
-     * @param goUp
-     */
     public void goUp(boolean goUp) {
         this.goUp = goUp;
     }
 
-    /**
-     *
-     * @param goDown
-     */
     public void goDown(boolean goDown) {
         this.goDown = goDown;
     }
 
-    /**
-     *
-     * @param goLeft
-     */
     public void goLeft(boolean goLeft) {
         this.goLeft = goLeft;
     }
 
-    /**
-     *
-     * @param goRight
-     */
     public void goRight(boolean goRight) {
         this.goRight = goRight;
     }
 
-    /**
-     *
-     * @param paddleColor
-     */
     public void setColor(Color paddleColor) {
         this.paddleColor = paddleColor;
     }
     
     /**
-     *
+     * Paddle constructor
      * @param x
      * @param y
      * @param rotate
@@ -152,7 +116,7 @@ public class Paddle {
     }
 
     /**
-     *
+     * Draw the paddle
      * @param g
      */
     public void render(Graphics g) {

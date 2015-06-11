@@ -23,6 +23,7 @@ public class Game {
     public int p3score;
     public int p4score;
 
+    int numberOfPlayers;
     int ballSize = 16;
     double ballSpeed = 1.2;
     Random randomGen = new Random();
@@ -35,8 +36,15 @@ public class Game {
 
     /**
      * Game creates the players and the ball
+     *
+     * @param numberOfPlayers
      */
-    public Game() {
+    public Game(int numberOfPlayers) {
+        p1score = 0;
+        p2score = 0;
+        p3score = 0;
+        p4score = 0;
+        this.numberOfPlayers = numberOfPlayers;
         // Create paddles and set color according to the number of players
         // left
         player1 = new Paddle(20, GameCanvas.playAreaHeight / 2 - Paddle.height / 2, false);
@@ -48,19 +56,19 @@ public class Game {
         player4 = new Paddle(GameCanvas.playAreaWidth / 2 - Paddle.height / 2, GameCanvas.playAreaHeight - 30, true);
 
         // Set colors according to the number of players
-        if (StartMenu.numberOfPlayers == 1) {
+        if (numberOfPlayers == 1) {
             player1.setColor(Color.RED);
             player2.setColor(Color.RED);
             player3.setColor(Color.RED);
             player4.setColor(Color.RED);
         }
-        if (StartMenu.numberOfPlayers == 2) {
+        if (numberOfPlayers == 2) {
             player1.setColor(Color.RED);
             player2.setColor(Color.BLUE);
             player3.setColor(Color.RED);
             player4.setColor(Color.BLUE);
         }
-        if (StartMenu.numberOfPlayers == 4) {
+        if (numberOfPlayers == 4) {
             player1.setColor(Color.RED);
             player2.setColor(Color.GREEN);
             player3.setColor(Color.BLUE);
@@ -68,6 +76,24 @@ public class Game {
         }
         // Create ball
         ball = new Ball(GameCanvas.playAreaWidth / 2, GameCanvas.playAreaHeight / 2);
+    }
+
+    public void resetGame(int numberOfPlayers) {
+        p1score = 0;
+        p2score = 0;
+        p3score = 0;
+        p4score = 0;
+        this.numberOfPlayers = numberOfPlayers;
+        player1.setXPosition(20);
+        player1.setYPosition(GameCanvas.playAreaHeight / 2 - Paddle.height / 2);
+        player2.setXPosition(GameCanvas.playAreaWidth - 30);
+        player2.setYPosition(GameCanvas.playAreaHeight / 2 - Paddle.height / 2);
+        player3.setXPosition(GameCanvas.playAreaWidth / 2 - Paddle.height / 2);
+        player3.setYPosition(20);
+        player4.setXPosition(GameCanvas.playAreaWidth / 2 - Paddle.height / 2);
+        player4.setYPosition(GameCanvas.playAreaHeight - 30);
+        ball.setXPosition(GameCanvas.playAreaWidth / 2);
+        ball.setYPosition(GameCanvas.playAreaHeight / 2);
     }
 
     /**
@@ -79,13 +105,15 @@ public class Game {
         player3.update();
         player4.update();
         wallCollision();
-        countScore(StartMenu.numberOfPlayers);
         paddleCollision();
+        countScore(numberOfPlayers);
         ball.update();
     }
 
     /**
      * Check scores
+     *
+     * @param numberOfPlayers
      */
     public void countScore(int numberOfPlayers) {
         switch (numberOfPlayers) {
@@ -93,7 +121,7 @@ public class Game {
                 if (paddleCollisionCheck) {
                     p1score++;
                 }
-                if (wallCollisionCheck) {
+                if (leftWallCollision || topWallCollision || rightWallCollision || bottomWallCollision) {
                     p1score--;
                 }
                 break;
@@ -136,7 +164,6 @@ public class Game {
      * Check for wall collisions.
      */
     public void wallCollision() {
-        wallCollisionCheck = false;
         leftWallCollision = false;
         rightWallCollision = false;
         topWallCollision = false;
@@ -145,26 +172,22 @@ public class Game {
         if (ball.getXPosition() <= 0) {
             ball.setXPosition(GameCanvas.playAreaWidth / 2);
             ball.setYPosition(GameCanvas.playAreaHeight / 2);
-            wallCollisionCheck = true;
             leftWallCollision = true;
             // Score against player 3 (right side)
         } else if (ball.getXPosition() + ballSize >= GameCanvas.playAreaWidth) {
             ball.setXPosition(GameCanvas.playAreaWidth / 2);
             ball.setYPosition(GameCanvas.playAreaHeight / 2);
-            wallCollisionCheck = true;
             rightWallCollision = true;
         }
         // Score against player 2 (top side)
         if (ball.getYPosition() <= 0) {
             ball.setXPosition(GameCanvas.playAreaWidth / 2);
             ball.setYPosition(GameCanvas.playAreaHeight / 2);
-            wallCollisionCheck = true;
             topWallCollision = true;
             // Score against player 4 (bottom side)
         } else if (ball.getYPosition() + ballSize >= GameCanvas.playAreaHeight) {
             ball.setXPosition(GameCanvas.playAreaWidth / 2);
             ball.setYPosition(GameCanvas.playAreaHeight / 2);
-            wallCollisionCheck = true;
             bottomWallCollision = true;
         }
     }

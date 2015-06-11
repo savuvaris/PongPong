@@ -60,11 +60,11 @@
 
 8.6.
 
-9.6.
+9.6.	2 tuntia	Palautteeseen tutustumista. Kurssin loppuvaatimuksien tarkempi tutustuminen.
 
-10.6.
+10.6.	4 tuntia 	Testejä lisätty Game-luokalle. Pieniä viilauksia. Uusi sekvenssikaavio lisätty. Javadoc ja Checkstyle raportit generoitu. Ensimmäinen versio käyttöohjeista ja testausdokumentista luotu.
 
-11.6.
+11.6.	2 tuntia	5. deadlinen palautus. 2. koodikatselmoinnin aloitus.
 
 12.6.
 

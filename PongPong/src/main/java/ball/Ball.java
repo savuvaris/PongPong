@@ -13,7 +13,7 @@ public class Ball {
 
     double x, y;
     int ballSize = 16;
-    double speedBase = 1.2;
+    double speedBase = 1.0;
 
     /**
      *  Horizontal speed
@@ -64,72 +64,40 @@ public class Ball {
         }
     }
 
-    /**
-     *
-     * @param x
-     */
     public void setXPosition(int x) {
         this.x = x;
     }
 
-    /**
-     *
-     * @param y
-     */
     public void setYPosition(int y) {
         this.y = y;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getXPosition() {
         return (int) Math.round(this.x);
     }
 
-    /**
-     *
-     * @return
-     */
     public int getYPosition() {
         return (int) Math.round(this.y);
     }
 
-    /**
-     *
-     * @param speedX
-     */
     public void setXSpeed(double speedX) {
         this.speedX = speedX;
     }
 
-    /**
-     *
-     * @param speedY
-     */
     public void setYSpeed(double speedY) {
         this.speedY = speedY;
     }
 
-    /**
-     *
-     * @return
-     */
     public double getXSpeed() {
         return speedX;
     }
 
-    /**
-     *
-     * @return
-     */
     public double getYSpeed() {
         return speedY;
     }
 
     /**
-     *
+     * Update new position
      */
     public void update() {
         boundingBox.setBounds((int) Math.round(this.x), (int) Math.round(this.y), this.ballSize, this.ballSize);
@@ -138,7 +106,7 @@ public class Ball {
     }
 
     /**
-     *
+     * Draw the ball
      * @param g
      */
     public void render(Graphics g) {
