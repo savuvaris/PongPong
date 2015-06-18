@@ -11,6 +11,7 @@ import startMenu.StartMenu;
 /**
  *
  * @author Tomi
+ * Class draws the play area, contains the main game loop.
  */
 public class GameCanvas extends Canvas implements Runnable {
 
@@ -18,13 +19,32 @@ public class GameCanvas extends Canvas implements Runnable {
      * PaddleControl moves the paddles
      */
     public static PaddleControl pc;
+
     JFrame frame;
 
+    /**
+     * Width of the JFrame
+     */
     public final int screenWidth = 600;
+    /**
+     * Height of the JFrame
+     */
     public final int screenHeight = screenWidth;
+    /**
+     * Dimension of the JFrame
+     */
     public final Dimension gameScreenSize = new Dimension(screenWidth, screenHeight);
+    /**
+     * Gametitle
+     */
     public final String gameTitle = "PongPong";
+    /**
+     * Playable area of the JFrame
+     */
     public static int playAreaWidth;
+    /**
+     * Playable area of the JFrame
+     */
     public static int playAreaHeight;
 
     public Graphics2D g2d;
@@ -35,7 +55,7 @@ public class GameCanvas extends Canvas implements Runnable {
     static boolean gameEnd = false;
 
     // Game length in seconds
-    int gameLength = 5;
+    int gameLength = 20;
     int timeCount = 0;
     int timeLeft;
 

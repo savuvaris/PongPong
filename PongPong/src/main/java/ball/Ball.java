@@ -8,25 +8,39 @@ import java.util.Random;
 /**
  *
  * @author Tomi
+ * Class moves the ball.
  */
 public class Ball {
 
-    double x, y;
+    /**
+     * Ball location in x
+     */
+    double x;
+    /**
+     * Ball location in y
+     */
+    double y;
+    /**
+     * Ball size in pixels
+     */
     int ballSize = 16;
+    /**
+     * Base speed. Some modifier is added to this in collisions.
+     */
     double speedBase = 1.0;
 
     /**
-     *  Horizontal speed
+     * Horizontal speed
      */
     public double speedX;
     /**
-     *  Vertical speed
+     * Vertical speed
      */
     public double speedY;
     Random randomGen = new Random();
 
     /**
-     *  Bounding box to check for collisions.
+     * Bounding box to check for collisions.
      */
     public Rectangle boundingBox;
 
@@ -46,7 +60,7 @@ public class Ball {
     }
 
     /**
-     *  Start the ball. This is invoked by the SPACE button
+     * Start the ball. This is invoked by the SPACE button
      */
     public void launch() {
         // Start in random direction
@@ -107,6 +121,7 @@ public class Ball {
 
     /**
      * Draw the ball
+     *
      * @param g
      */
     public void render(Graphics g) {

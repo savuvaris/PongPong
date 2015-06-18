@@ -66,7 +66,7 @@
 
 11.6.	2 tuntia	5. deadlinen palautus. 2. koodikatselmoinnin aloitus.
 
-12.6.
+12.6.	4 tuntia	2. koodikatselmointi tehty. Lisätehtävä suoritettu, jolla korvataan demoon osallistuminen avoimen yliopiston opiskelijoille.
 
 13.6.
 
@@ -78,5 +78,5 @@
 
 17.6.
 
-18.6.
+18.6.	3 tuntia	Viimeistelyä viimeiseen palautukseen.
 

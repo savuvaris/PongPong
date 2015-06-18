@@ -9,6 +9,7 @@ import startMenu.StartMenu;
 /**
  *
  * @author Tomi
+ * Class creates the players and the ball. It updates the positions and checks for collisions.
  */
 public class Game {
 
@@ -33,6 +34,8 @@ public class Game {
     boolean topWallCollision = false;
     boolean bottomWallCollision = false;
     public boolean paddleCollisionCheck = false;
+    boolean oldpaddleCollisionCheck = false;
+    boolean filteredPaddleCollisionCheck = false;
 
     /**
      * Game creates the players and the ball
@@ -78,6 +81,9 @@ public class Game {
         ball = new Ball(GameCanvas.playAreaWidth / 2, GameCanvas.playAreaHeight / 2);
     }
 
+    /**
+     * Reset game when starting a new one
+     */
     public void resetGame(int numberOfPlayers) {
         p1score = 0;
         p2score = 0;
@@ -106,8 +112,22 @@ public class Game {
         player4.update();
         wallCollision();
         paddleCollision();
+        filter();
         countScore(numberOfPlayers);
         ball.update();
+    }
+
+    /**
+     * Add some filtering to the paddleCollisionCheck to shorten the duration
+     * into one frame. For some reason paddleCollisionCheck is active for 3 frames.
+     */
+    public void filter() {
+        if (!oldpaddleCollisionCheck && paddleCollisionCheck) {
+            filteredPaddleCollisionCheck = true;
+        } else {
+            filteredPaddleCollisionCheck = false;
+        }
+        oldpaddleCollisionCheck = paddleCollisionCheck;
     }
 
     /**
@@ -118,7 +138,7 @@ public class Game {
     public void countScore(int numberOfPlayers) {
         switch (numberOfPlayers) {
             case 1:
-                if (paddleCollisionCheck) {
+                if (filteredPaddleCollisionCheck) {
                     p1score++;
                 }
                 if (leftWallCollision || topWallCollision || rightWallCollision || bottomWallCollision) {

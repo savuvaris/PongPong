@@ -6,6 +6,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import game.GameCanvas;
 
+/**
+ *
+ * @author Tomi
+ * Class creates the start menu and contains the Main class.
+ */
 public class StartMenu extends JFrame {
 
     public static int numberOfPlayers;

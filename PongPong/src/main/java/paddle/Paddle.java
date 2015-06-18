@@ -8,22 +8,34 @@ import game.GameCanvas;
 /**
  *
  * @author Tomi
+ * Paddle is the class for the player controllable paddle
  */
 public class Paddle {
 
-    int x, y;
+    /**
+     * Paddle location in x
+     */
+    int x;
+    /**
+     * Paddle location in y
+     */
+    int y;
     boolean rotate; // Rotate by 90 degrees for the top/bottom paddles
+    /**
+     * Paddle width
+     */
     int width = 10;
 
     /**
-     *  Height is used to calculate how far the paddle can travel before hitting the edges of the play area.
+     * Height is used to calculate how far the paddle can travel before hitting
+     * the edges of the play area.
      */
     public static int height = 80;
     int speed = 2;
     Color paddleColor;
 
     /**
-     *  Bounding box to check collisions
+     * Bounding box to check collisions
      */
     public Rectangle boundingBox;
 
@@ -47,7 +59,7 @@ public class Paddle {
     public void setYPosition(int y) {
         this.y = y;
     }
-    
+
     public void goUp(boolean goUp) {
         this.goUp = goUp;
     }
@@ -67,9 +79,10 @@ public class Paddle {
     public void setColor(Color paddleColor) {
         this.paddleColor = paddleColor;
     }
-    
+
     /**
      * Paddle constructor
+     *
      * @param x
      * @param y
      * @param rotate
@@ -89,7 +102,7 @@ public class Paddle {
     }
 
     /**
-     *  Set the new location. Also set the orientation of the paddle.
+     * Set the new location. Also set the orientation of the paddle.
      */
     public void update() {
         if (rotate) {
@@ -99,7 +112,7 @@ public class Paddle {
         }
 
         if (rotate) {
-            if (goLeft && x > 0) { 
+            if (goLeft && x > 0) {
                 x -= speed;
             }
             if (goRight && x < GameCanvas.playAreaWidth - height) { // height is actually width, when paddle is rotated...
@@ -117,6 +130,7 @@ public class Paddle {
 
     /**
      * Draw the paddle
+     *
      * @param g
      */
     public void render(Graphics g) {

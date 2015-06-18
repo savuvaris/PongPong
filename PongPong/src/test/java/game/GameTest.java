@@ -59,6 +59,7 @@ public class GameTest {
         // Check for score
         assertEquals(0, instance.p1score);
         instance.paddleCollision();
+        instance.filter();
         instance.countScore(1);
         assertEquals(1, instance.p1score);
 
@@ -67,6 +68,7 @@ public class GameTest {
         instance.ball.update();
         instance.player1.update();
         instance.paddleCollision();
+        instance.filter();
         instance.wallCollision();
         instance.ball.setXPosition(0);
         instance.countScore(1);

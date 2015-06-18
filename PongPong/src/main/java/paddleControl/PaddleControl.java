@@ -9,6 +9,7 @@ import startMenu.StartMenu;
 /**
  *
  * @author Tomi
+ * Class controls the paddles. Different controls in 1p, 2p and 4p mode
  */
 public class PaddleControl implements KeyListener {
 
